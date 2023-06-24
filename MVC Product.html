@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Daftar Produk Toko Kristo</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #ccc;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid hsl(0, 3%, 34%);
+        }
+
+        th {
+            background-color: #cb1212;
+            color: white;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:hover {
+            background-color: #cce6ff;
+        }
+
+        button {
+            background-color: #cb1212;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ff3333;
+        }
+
+        #detailContainer {
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px solid #ccc;
+            background-color: #f2f2f2;
+        }
+
+        #detailTitle {
+            color: #cb1212;
+        }
+
+        #detailImage {
+            max-width: 200px;
+            margin-bottom: 10px;
+        }
+
+        #detailBrand {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Daftar Produk Toko Kristo</h2>
+
+    <table id="productTable">
+        <thead>
+            <tr>
+                <th>Nomor</th>
+                <th>Nama Produk</th>
+                <th>Harga</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Buku</td>
+                <td>3000</td>
+                <td><button onclick="showDetail(1)">Detail</button></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Sampo</td>
+                <td>2000</td>
+                <td><button onclick="showDetail(2)">Detail</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="detailContainer" style="display: none;">
+        <h2 id="detailTitle"></h2>
+        <img id="detailImage" />
+        <p id="detailName"></p>
+        <p id="detailPrice"></p>
+        <p id="detailBrand"></p>
+        <button onclick="hideDetail()">Kembali</button>
+    </div>
+
+    <script>
+        function showDetail(number) {
+            var product;
+            if (number === 1) {
+                product = {
+                    Number: 1,
+                    Name: "Buku",
+                    Price: 3000,
+                    Image: "D:\MVC Product _ 215314147(Kristo Purba)\buku 1.png",
+                    Brand: "Erlangga"
+                };
+            } else if (number === 2) {
+                product = {
+                    Number: 2,
+                    Name: "Sampo",
+                    Price: 2000,
+                    Image: "D:\MVC Product _ 215314147(Kristo Purba)\sampo.jpeg",
+                    Brand: "Buatan Alam"
+                };
+            }
+
+            if (product) {
+                document.getElementById("detailTitle").innerText = "Detail Produk";
+                document.getElementById("detailImage").src = product.Image;
+                document.getElementById("detailName").innerText = "Nama Barang: " + product.Name;
+                document.getElementById("detailPrice").innerText = "Harga Barang: " + product.Price;
+                document.getElementById("detailBrand").innerText = "Merk: " + product.Brand;
+                document.getElementById("detailContainer").style.display = "block";
+            }
+        }
+
+        function hideDetail() {
+            document.getElementById("detailContainer").style.display = "none";
+        }
+    </script>
+</body>
+</html>
